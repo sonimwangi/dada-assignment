@@ -1,0 +1,9 @@
+from bip32 import BIP32, HARDENED_INDEX
+bip32 = BIP32.from_seed(bytes.fromhex("01"))
+
+PK = bip32.privkey
+child_key = bip32.get_xpriv_from_path([1, HARDENED_INDEX, 9998])
+child_address = bip32.get_xpub_from_path([1, HARDENED_INDEX, 9998])
+
+print("Child Private Key (WIF):", child_key)
+print("Child Address (hex):", child_address)
